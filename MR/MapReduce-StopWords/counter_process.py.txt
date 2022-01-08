@@ -1,0 +1,17 @@
+import sys
+import re
+
+stop_count = 0
+total_count = 1
+
+for line in sys.stdin:
+    try:
+        counter, count =line.strip().split('=', 1)
+        count = int(count)
+        if counter == 'Stop words':
+            stop_count = count
+        elif counter == 'Total words':
+            total_count = count        
+    except ValueError as e:
+        continue
+print((stop_count/float(total_count))*100)
